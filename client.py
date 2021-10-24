@@ -10,16 +10,14 @@ client.connect(IP_PORT)
 def listen_server():
     while True:
         data = client.recv(MAX)
-        print('                   ', data.decode('utf-8'))
+        print('              ', data.decode('utf-8'))
 
 
 def send_server():
     lis_tread = Thread(target=listen_server)
     lis_tread.start()
-    # client.send(input('username: ').encode('utf-8'))
     while True:
-
-        client.send(input('').encode('utf-8'))
+        client.send(input().encode('utf-8'))
 
 
 if __name__ == '__main__':
