@@ -14,10 +14,7 @@ class Server(Socket):
     def send_data(self, data, user, address):
         for use in self.users_names:
             if user != use:
-                l_1 = self.users_names[user]
-                l_2 = data.decode()
-                print(l_1, l_2)
-                l = '[red]' + l_1 + '[/red]' + ' -> ' + l_2
+                l = '[red]' + self.users_names[user] + '[/red]' + '                           ' + data.decode()
                 print(l)
                 use.send(l.encode())
 
