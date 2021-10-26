@@ -1,2 +1,3 @@
 IP_PORT = ('127.0.0.1', 1050)
 MAX = 2048
+ENCODING = 'utf-8'

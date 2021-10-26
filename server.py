@@ -20,17 +20,17 @@ class Server(Socket):
 
     def listen_socket(self, user, address):
         print('listening')
-        name = user.recv(MAX).decode('utf-8')
+        name = user.recv(MAX).decode(ENCODING)
         print(name)
         self.users_names[user] = name
         while True:
-            data = user.recv(MAX).decode('utf-8')
+            data = user.recv(MAX).decode(ENCODING)
             print(data)
             if data == '':
-                self.send_data(f'{self.users_names[user]} disconnect'.encode('utf-8'), user, address)
+                self.send_data(f'{self.users_names[user]} disconnect'.encode(ENCODING), user, address)
                 exit()
             print('user send', data)
-            self.send_data(data.encode('utf-8'), user, address)
+            self.send_data(data.encode(ENCODING), user, address)
 
     def start(self):
         while True:

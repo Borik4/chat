@@ -11,27 +11,26 @@ client.connect(IP_PORT)
 def listen_server():
     while True:
         data = client.recv(MAX)
-        pr(data.decode('utf-8'))
+        pr(data.decode(ENCODING))
 
 
 def send_server():
-    user_name()
+    pr('[red]input name[/red] ', end='')
+    client.send(input().encode())
+    # user_name()
     lis_tread = Thread(target=listen_server)
     lis_tread.start()
     while True:
-        client.send(input().encode('utf-8'))
+        client.send(input().encode(ENCODING))
+
 
 def user_name():
     while True:
         pr('[red]input name[/red] ', end='')
         client.send(input().encode())
-        if client.recv(MAX).decode('utf-8') != '0':
+        if client.recv(MAX).decode(ENCODING) != '0':
             break
         print('username is not available')
-
-
-
-
 
 
 if __name__ == '__main__':
